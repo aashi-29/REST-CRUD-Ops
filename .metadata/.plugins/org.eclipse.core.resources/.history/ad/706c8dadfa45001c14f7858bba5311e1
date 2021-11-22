@@ -1,0 +1,56 @@
+package com.mobile.app.myProject.ui.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mobile.app.myProject.ui.model.UserRest;
+
+@RestController
+@RequestMapping("/users")  //http://localhost:8080/users (since we are using tomcat server)
+public class UserController {
+
+	@RequestMapping   //for optional request parameters
+	public String getUsers(@RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="limit", defaultValue="20") int limit)
+	{
+		return "update user was called with page" +page + limit;
+	}
+	
+	
+	@RequestMapping(value="/{userId}", method = RequestMethod.GET, produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+	//to return the set values in xml and json
+	public ResponseEntity<UserRest> getUser(@PathVariable String userId)
+	{
+		UserRest returnValue= new UserRest();
+		returnValue.setEmail("xyz.gmail.com");
+		returnValue.setFirstName("Aastha");
+		returnValue.setLastName("Tewari");
+		
+		return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
+	}
+	
+	@RequestMapping( method = RequestMethod.POST)
+	public String createUser()
+	{
+		return "create user was called";
+	}
+	
+	@RequestMapping( method = RequestMethod.PUT)
+	public String updateUser()
+	{
+		return "update user was called";
+	}
+	
+	@RequestMapping( method = RequestMethod.DELETE)
+	public String deleteUser()
+	{
+		return "delete user was called";
+	}
+	
+	
+}

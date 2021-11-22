@@ -1,0 +1,5 @@
+package com.mobile.app.myProject.ui.controller;
+
+public class UserController {
+
+}

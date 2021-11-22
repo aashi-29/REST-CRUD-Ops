@@ -1,0 +1,36 @@
+package com.mobile.app.myProject.ui.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("users")  //http://localhost:8080/users (since we are using tomcat server)
+public class UserController {
+
+	@RequestMapping( method = RequestMethod.GET)
+	public String getUser()
+	{
+		return "get user was called";
+	}
+	
+	@RequestMapping( method = RequestMethod.POST)
+	public String createUser()
+	{
+		return "create user was called";
+	}
+	
+	@RequestMapping( method = RequestMethod.PUT)
+	public String updateUser()
+	{
+		return "update user was called";
+	}
+	
+	@RequestMapping( method = RequestMethod.DELETE)
+	public String deleteUser()
+	{
+		return "delete user was called";
+	}
+	
+	
+}

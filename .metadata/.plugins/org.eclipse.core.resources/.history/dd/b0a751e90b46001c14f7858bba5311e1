@@ -1,0 +1,5 @@
+package com.mobile.app.myProject.ui.model;
+
+public class UpdateUserDetailsRequestModel {
+
+}
